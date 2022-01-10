@@ -31,6 +31,26 @@ let team = [
     },
   ];
 
+  for(let i = 1; i < team.length ; i++) {
+   
+        createDomCard( team[i] )        
+}
+
+function createDomCard( cardObj )
+{
+  document.querySelector('.team-container').innerHTML += 
+        `<div class="team-card">
+            <div class="card-image">
+                <img src="img/${cardObj.image}" alt="${cardObj.name}"/>
+            </div>
+            
+            <div class="card-text">
+                <h3>${cardObj.name}</h3>
+                <p>${cardObj.role}</p>
+            </div>
+        </div>`;
+}
+
 document.getElementById("addMemberButton").addEventListener("click",function(){
 
   let userName = document.getElementById("name").value;
@@ -43,31 +63,8 @@ document.getElementById("addMemberButton").addEventListener("click",function(){
     image : userPhoto
   }
 
-  document.querySelector('.team-container').innerHTML += 
-  `<div class="team-card">
-      <div class="card-image">
-          <img src="${userObj.image}" alt="${userObj.name}"/>
-      </div>
-      
-      <div class="card-text">
-          <h3>${userObj.name}</h3>
-          <p>${userObj.role}</p>
-      </div>
-  </div>`;
+  createDomCard(userObj);
 });
 
-for(let i = 1; i < team.length ; i++) {
-    document.querySelector('.team-container').innerHTML += 
-        `<div class="team-card">
-            <div class="card-image">
-                <img src="${team[i].image}" alt="${team[i].name}"/>
-            </div>
-            
-            <div class="card-text">
-                <h3>${team[i].name}</h3>
-                <p>${team[i].role}</p>
-            </div>
-        </div>`;
-}
 
 
