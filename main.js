@@ -33,15 +33,20 @@ let team = [
 
   for(let i = 1; i < team.length ; i++) {
    
-        createDomCard( team[i] )        
+        createDomCard( team[i] );      
+
 }
 
 function createDomCard( cardObj )
 {
+  let immaginePre = "img/";
+  if(cardObj.image.slice(0,4) == "http"){
+    immaginePre ="";
+  }
   document.querySelector('.team-container').innerHTML += 
         `<div class="team-card">
             <div class="card-image">
-                <img src="img/${cardObj.image}" alt="${cardObj.name}"/>
+                <img src="${immaginePre}${cardObj.image}" alt="${cardObj.name}"/>
             </div>
             
             <div class="card-text">
